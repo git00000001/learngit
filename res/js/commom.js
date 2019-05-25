@@ -22,13 +22,15 @@ function commom() {
 
 }
 function indexList(item){
+    var url="res/img/sy_img"+parseInt(Math.random()*5+1) +".jpg"
+    console.log(Math.random()*5,url)
     var strVar = "";
     strVar += "<div class=\"item\">\n";
     strVar += "	<div class=\"layui-fluid\">\n";
     strVar += "		<div class=\"layui-row\">\n";
     strVar += "			<div class=\"layui-col-xs12 layui-col-sm4 layui-col-md5\">\n";
     strVar += "				<div class=\"img\">\n";
-    strVar += "					<img src=\"res/img/sy_img1.jpg\" alt=\"\">\n";
+    strVar += "					<img src='"+url+"'alt=\"\">\n";
     strVar += "				<\/div>\n";
     strVar += "			<\/div>\n";
     strVar += "			<div class=\"layui-col-xs12 layui-col-sm8 layui-col-md7\">\n";
