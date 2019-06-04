@@ -11,7 +11,7 @@
 
 
 
-body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif; overflow-x: hidden;}
+body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-serif; overflow-x: hidden;color: #333}
 .w1000{max-width: 1000px!important; margin:0 auto;}
 .header{height: 120px; line-height: 120px; position: relative; font-size: 16px;}
 .header .logo,.header .welcome-text,.header .nav{position: absolute; top: 0;}
@@ -116,6 +116,13 @@ body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-se
 .whisper-content .whisper-list .img-box{overflow: hidden;}
 .whisper-content .whisper-list .img-box img{float: left; margin: 0px 18px 18px 0;}
 .whisper-content .whisper-list .img-box img:last-child{margin-right: 0;}
+.preface{
+  color: #999;
+  font-size: 24px;
+  padding-bottom: 40px;
+  text-indent: 2em ;
+  line-height: 150%
+}
 /*end-whisper*/
 
 
@@ -152,8 +159,9 @@ body{font: 14px 宋体 Helvetica Neue,Helvetica,PingFang SC,Tahoma,Arial,sans-se
 
 
 /*album*/
-.album-content{padding: 60px 0}
-.album-content a{display: block;line-height: 150%;color: #1365fc;font-size: 16px;}
+.album-content{padding: 20px 0}
+.album-content a{display: block;line-height: 200%;color: #1365fc;font-size: 16px;text-indent: 2em}
+.MyCollect{line-height: 80px;font-size: 24px}
 .album-content .img-info{margin-top: 66px; overflow: hidden; font-size: 16px; margin-bottom: 126px;}
 .album-content .img-info img{float: left; padding-right: 60px;}
 .album-content .img-info .title{line-height: 30px; margin-top: 124px; padding-left: 20px;}

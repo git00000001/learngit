@@ -27,15 +27,15 @@
       </a>
     </h1>
     <div class="nav">
-      <a href="index.html" class="active">文章</a>
-      <a href="whisper.html">隨想</a>
+      <a href="index.html" class="active">主页</a>
+      <a href="whisper.html">随想</a>
       <a href="leacots.html">留言</a>
       <a href="collect.html">收藏</a>
       <a href="about.html">关于</a>
     </div>
     <ul class="layui-nav header-down-nav">
-      <li class="layui-nav-item"><a href="index.html">文章</a></li>
-      <li class="layui-nav-item"><a href="whisper.html">隨想</a></li>
+      <li class="layui-nav-item"><a href="index.html">主页</a></li>
+      <li class="layui-nav-item"><a href="whisper.html">随想</a></li>
       <li class="layui-nav-item"><a href="leacots.html">留言</a></li>
       <li class="layui-nav-item"><a href="collect.html">收藏</a></li>
       <li class="layui-nav-item"><a href="about.html" class="active">关于</a></li>
@@ -59,7 +59,7 @@
         <span class="layui-breadcrumb" lay-separator="|">
           <a href="javascript:;" class="active">前端日志</a>
           <a href="javascript:;">兴趣杂闻</a>
-          <a href="javascript:;">疑难杂症</a>
+          <a href="javascript:;">我的问题</a>
         </span>
       </div>
       <div class="list-item">
@@ -83,87 +83,88 @@
         </div>
       </div>
     </div>
-    <script src="res/layui/layui.js"></script>
-    <script src="res/js/commom.js"></script>
-    <script type="text/javascript">
-      layui.config({
-        base: 'res/js/util/'
-      }).use(['element', 'laypage', 'jquery', 'menu', 'layer'], function () {
-        element = layui.element, laypage = layui.laypage, $ = layui.$, menu = layui.menu, layer = layui.layer;
-        menu.init();
-        var that = this,
-          url = "./res/js/json/log1.json"
-        this.getmore = function (url, _) {
-          $.ajax({
-            url: url,
-            success: function (res) {
-              if (res && res.data) {
-                var html = ''
-                res.data.map((v, i) => {
-                  html += i < 6 ? indexList(v) : ''
-                })
-                $('.list-item').html(html)
+  </div>
+  <script src="res/layui/layui.js"></script>
+  <script src="res/js/commom.js"></script>
+  <script type="text/javascript">
+    layui.config({
+      base: 'res/js/util/'
+    }).use(['element', 'laypage', 'jquery', 'menu', 'layer'], function () {
+      element = layui.element, laypage = layui.laypage, $ = layui.$, menu = layui.menu, layer = layui.layer;
+      menu.init();
+      var that = this,
+        url = "./res/js/json/log1.json"
+      this.getmore = function (url, _) {
+        $.ajax({
+          url: url,
+          success: function (res) {
+            if (res && res.data) {
+              var html = ''
+              res.data.map((v, i) => {
+                html += i < 6 ? indexList(v) : ''
+              })
+              $('.list-item').html(html)
 
-              }
-            },
-            complete: function (res) {
-              if (res.status !== 200) {
-                layer.msg('下一页文件不存在');
-                _.curr--
-                laypage.render(_);
-              }
-            },
-            dataType: 'json'
-          });
-        }
-        this.ajax = function (url) {
-          $.ajax({
-            url: url,
-            success: function (res) {
-              if (res && res.data) {
-                var html = ''
-                res.data.map((v, i) => {
-                  html += i < 6 ? indexList(v) : ''
-                })
-                $('.list-item').html(html)
-                laypage.render({
-                  elem: 'demo',
-                  count: 100,
-                  limit: 3,
-                  jump: function (obj, first) {
-                    //首次不执行
-                    if (!first) {
-                      url = url.replace(/[0-9]/ig, obj.curr)
-                      that.getmore(url, this)
-                    }
-                  } 
-                });
-              }
-            },
-            dataType: 'json'
-          });
-        }
+            }
+          },
+          complete: function (res) {
+            if (res.status !== 200) {
+              layer.msg('下一页文件不存在');
+              _.curr--
+              laypage.render(_);
+            }
+          },
+          dataType: 'json'
+        });
+      }
+      this.ajax = function (url) {
+        $.ajax({
+          url: url,
+          success: function (res) {
+            if (res && res.data) {
+              var html = ''
+              res.data.map((v, i) => {
+                html += i < 6 ? indexList(v) : ''
+              })
+              $('.list-item').html(html)
+              laypage.render({
+                elem: 'demo',
+                count: 100,
+                limit: 3,
+                jump: function (obj, first) {
+                  //首次不执行
+                  if (!first) {
+                    url = url.replace(/[0-9]/ig, obj.curr)
+                    that.getmore(url, this)
+                  }
+                }
+              });
+            }
+          },
+          dataType: 'json'
+        });
+      }
 
-        $('.layui-breadcrumb').click(function (e) {
-          switch ($(e.target).index()) {
-            case 0:
-              url = "./res/js/json/log1.json"
-              break;
-            case 2:
-              url = "./res/js/json/other1.json"
-              break;
-            case 4:
-              url = "./res/js/json/problem1.json"
-              break;
-            default:
-              break;
-          }
-          $(e.target).addClass('active').siblings().removeClass('active')
-          that.ajax(url)
-        })
+      $('.layui-breadcrumb').click(function (e) {
+        switch ($(e.target).index()) {
+          case 0:
+            url = "./res/js/json/log1.json"
+            break;
+          case 2:
+            url = "./res/js/json/other1.json"
+            break;
+          case 4:
+            url = "./res/js/json/problem1.json"
+            break;
+          default:
+            break;
+        }
+        $(e.target).addClass('active').siblings().removeClass('active')
         that.ajax(url)
       })
-    </script>
+      that.ajax(url)
+    })
+  </script>
 </body>
 
 </html>
